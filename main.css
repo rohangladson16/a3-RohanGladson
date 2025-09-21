@@ -1,0 +1,182 @@
+/* Rohan Gladson */
+/* CS 4241: Webware: Computational Technology for Network Information Systems */
+/* main.css */
+
+/* Style 1: Base Page Style */
+body {
+  background: #121212;       
+  color: #E1E2E2;            
+  font-family: "Libertinus Sans", sans-serif;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style 2: Header and Subheader(s)*/
+header {
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #4BE6B8;            
+}
+
+h2 {
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  margin: 24px 0 12px 0;
+  color: #26ABE6;            
+}
+
+/* Style 2: Main container and Section Cards */
+main {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+section {
+  background: #1a1a1a;       
+  border: 1px solid #2a2a2a; 
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+/* Addtional component to improve readabilty:
+   Purpose is an adjustment that allows for the user to horizontally
+   scroll for wide tables, if they are on narrow screens */
+section[aria-labelledby="results-title"] { 
+  overflow-x: auto; 
+}
+ /* IF a user, is instead, using a monitor or laptop, this will have 
+    to where it places form left and results right */
+@media (min-width: 900px) {
+  main { flex-direction: row; align-items: flex-start; }
+  section[aria-labelledby="add-title"]     { flex: 0 0 340px; }
+  section[aria-labelledby="results-title"] { flex: 1 1 auto; min-width: 0; }
+}
+
+/* Style 3: Webpage Layout */
+#workout-form > div {
+  display: grid;
+  grid-template-columns: 120px 1fr; /* label | input */
+  align-items: center;
+  gap: 10px; /* space between label and input */
+  width: 100%;
+}
+
+/* Now, the first row spans across the form, in case the 
+   user desires to put in a logner input */
+
+#workout-form > div:first-of-type {
+  grid-column: 1 / -1;
+}   
+
+label { 
+  font-weight: 600; 
+}
+
+/* To improve upon readability, the tnput fields are set up  
+   to fit neatly in their grid cells */
+input[type="text"],
+input[type="number"] {
+  box-sizing: border-box;   /* include padding/borders in width */
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #121212;
+}
+
+/* Anotoher component to improve upon the readability of the page, the following will now
+   remove number input spinners to accomadate for cleaner look */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Now, we have it to where we can submit button spans both grid columns */
+#workout-form button {
+  grid-column: 1 / -1;
+}
+
+/* Style 4: Buttons */
+button {
+  background-color: #4BE6B8; 
+  border: none;
+  padding: 8px 12px;
+  color: #000000;            
+  font-family: "Oswald", sans-serif;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+button:hover { background-color: #26ABE6; } /* blue on hover */
+
+/* To improve upon user accessibiliity, the below implementaion is
+   set to ensure that user's the navigate the site with a keyboard
+   can also see which input or button is currently focused.*/
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #26ABE6;
+  outline-offset: 2px;
+}
+
+/* The purpose of the following class is to now use it to to 
+   delete buttons injected by JS */
+button.delete {
+  background-color: #CE7AE6; /* magenta for destructive */
+  color: #ffffff;
+}
+button.delete:hover { 
+  filter: brightness(1.1); 
+}
+
+/* Style 5: Results Table */
+#results {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+th, td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #444444; 
+  text-align: center;
+}
+
+#results thead th {
+  background: #2B00C7;  
+  color: #ffffff;
+  font-weight: 600;
+}
+
+#results tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05); 
+}
+
+/* Style 6: Footer */
+footer {
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 24px;
+  color: #E1E2E2;
+  text-align: left;
+  font-size: 0.95rem;
+}
