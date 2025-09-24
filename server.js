@@ -4,6 +4,7 @@
 
 // The design is meant to set up to have express server 
 // with sessions, as well as having a simple login/logout API.
+import 'dotenv/config';
 import express from "express";
 import helmet from "helmet";          // security headers
 import morgan from "morgan";          // request logging
