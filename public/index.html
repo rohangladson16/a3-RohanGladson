@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Workout Log • Assignment 3</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Two-tier web app scaffold with login/session; workouts UI carries forward from A2.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+    <!-- Pico.css framework -->
+     <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    
+    <!-- Custom CSS file for override -->
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Local script -->
+    <script src="js/main.js" defer></script>
+
+    <!-- Prevent favicon error -->
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  </head>
+  <body>
+    <header>
+      <h1>Workout Log</h1>
+    </header>
+
+    <main>
+      <!-- Login  Perspective -->
+      <section id="login-view" aria-labelledby="login-title">
+        <h2 id="login-title">Login</h2>
+        <form id="login-form" action="/login" method="POST" novalidate>
+            <label for="username">Username</label>
+            <input id="username" name="username" required minlength="2" autocomplete="username"
+            placeholder="e.g., rgladson" type="text"/>
+            <button type="submit">Login</button>
+        </form>
+        <p class="muted">New usernames will create an account (you’ll be notified).</p>
+      </section>
+
+      <!--  App Perspective -->
+      <section id="app-view" aria-labelledby="app-title" hidden>
+        <div class="topbar">
+          <h2 id="app-title">Dashboard</h2>
+          <form id="logout-form" action="/logout" method="POST">
+            <button type="submit">Logout</button>
+          </form>
+        </div>
+
+        <div id="first-login-banner" class="banner" hidden>
+          No account found — created a new one for you.
+        </div>
+
+        <div id="flash" aria-live="polite" class="sr-only"></div>
+
+        <p id="greeting" class="greet"></p>
+
+        <!-- Add a Workout -->
+        <section aria-labelledby="add-title">
+          <h2 id="add-title">Add a Workout</h2>
+          <form id="workout-form" novalidate>
+            <div>
+              <label for="exercise">Exercise</label>
+              <input type="text" id="exercise" name="exercise" required minlength="2"
+                     pattern=".*[A-Za-z].*" title="Include at Least One Letter (e.g., Bench Press)"
+                     placeholder="e.g., Bench Press"/>
+            </div>
+
+            <div>
+              <label for="sets">Sets</label>
+              <input type="number" id="sets" name="sets" required min="0" step="1"
+                     placeholder="e.g., 4 (Or 0 for Activities)" inputmode="numeric"/>
+            </div>
+
+            <div>
+              <label for="reps">Reps</label>
+              <input type="number" id="reps" name="reps" required min="0" step="1"
+                     placeholder="e.g., 10 (Or 0 for Activities)" inputmode="numeric"/>
+            </div>
+
+            <div>
+              <label for="weight">Weight (lbs)</label>
+              <input type="number" id="weight" name="weight" required min="0" step="1"
+                     placeholder="e.g., 135 (Or 0 for Bodyweight)" inputmode="numeric"/>
+            </div>
+
+            <!-- Workout type radios -->
+            <fieldset>
+              <legend>Type</legend>
+              <label>
+                <input type="radio" name="type" value="strength" checked>
+                Strength
+              </label>
+              <label>
+                <input type="radio" name="type" value="activity">
+                Activity
+              </label>
+            </fieldset>
+
+            <!-- Bodyweight checkbox -->
+            <label>
+              <input type="checkbox" id="bodyweight" name="bodyweight" value="true">
+              Bodyweight movement
+            </label>
+
+            <!-- Notes textarea -->
+            <div>
+              <label for="notes">Notes (optional)</label>
+              <textarea id="notes" name="notes" rows="3"
+                        placeholder="e.g., [Is user choose a differnt type of workout] I went on a 5 mile hike"></textarea>
+            </div>
+
+            <!-- Buttons -->
+            <button type="submit" id="submit-btn">Add Workout</button>
+            <button type="button" id="cancel-edit" hidden>Cancel Edit</button>
+          </form>
+        </section>
+
+        <!-- Results Table -->
+        <section aria-labelledby="results-title">
+          <h2 id="results-title">All Workouts</h2>
+          <table id="results">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Exercise</th>
+                <th>Sets</th>
+                <th>Reps</th>
+                <th>Weight</th>
+                <th>Volume</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- rows injected by main.js -->
+            </tbody>
+          </table>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <p>Rohan Gladson | CS4241 Assignment 3 | WPI</p>
+    </footer>
+  </body>
+</html>

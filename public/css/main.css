@@ -1,0 +1,179 @@
+/* Rohan Gladson */
+/* CS 4241: Webware: Computational Technology for Network Information Systems */
+/* main.css */
+
+:root {
+  color-scheme: dark;
+  --bg: #0f172a;          /* Page Background */
+  --panel: #111827;       /* Cards or Sections */
+  --panel-border: #1f2937;
+  --text: #e5e7eb;        /* Primary Text */
+  --muted: #9ca3af;       /* Muted Text */
+  --accent: #26ABE6;      /* (Links, Focus, Controls) */
+  --accent-strong: #1e90cf;
+  --danger: #ef4444;
+  --table-stripe: #0b1426;
+  --shadow: 0 8px 24px rgba(0,0,0,.25);
+  --radius: 14px;
+}
+
+/* Having to where we have Pico tokens (from the Pico.css CSS Template so 
+   Pico adopts the web pages color choice */
+:root {
+  --pico-background-color: var(--bg);
+  --pico-color:            var(--text);
+  --pico-muted-color:      var(--muted);
+  --pico-primary:          var(--accent);
+  --pico-primary-underline: rgba(38,171,230,.35);
+  --pico-border-radius:    12px;
+  --pico-form-element-border-color: #374151;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Libertinus Sans', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 24px;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  margin: 1rem 0 .5rem;
+}
+
+/* Web Page Layout */
+header {
+  margin-bottom: 16px;
+}
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Panels and sections  */
+section {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+
+/* Labels keep form readability */
+label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: .35rem;
+  margin-right: .75rem;
+  margin-bottom: .9rem;
+  font-weight: 500;
+}
+
+fieldset {
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: .9rem;
+}
+
+legend {
+  padding: 0 .4rem;
+  color: var(--accent);
+  font-family: 'Oswald', sans-serif;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  accent-color: var(--accent);
+  margin-right: .45rem;
+}
+
+/* Danger variant (for delete later) */
+button.danger {
+  border-color: #7f1d1d;
+  background: #450a0a;
+  color: #fecaca;
+}
+
+/* Top bar in app view */
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* screen-reader-only utility class, so the flash region works as intended:*/
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* Muted/help text */
+.muted { color: var(--muted); font-size: .95em; }
+
+/* Banner (account creation message) */
+.banner {
+  background: #332f15;
+  border: 1px solid #7c6f2a;
+  color: #fff6cf;
+  padding: .6rem .8rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+/* Greeting */
+.greet { font-weight: 700; margin-bottom: 1rem; }
+
+/* Show and Hide Views */
+#login-view[hidden],
+#app-view[hidden] { display: none !important; }
+
+/* Form grid */
+#workout-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--panel-border);
+  overflow: hidden;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+thead th {
+  background: #0b1220;
+  color: var(--text);
+  padding: .6rem .75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--panel-border);
+}
+tbody td {
+  padding: .6rem .75rem;
+  border-top: 1px solid var(--panel-border);
+}
+tbody tr:hover td {
+  background: var(--table-stripe);
+}
+
+/* Footer */
+footer {
+  color: var(--muted);
+  text-align: center;
+  margin-top: 24px;
+}
