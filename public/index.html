@@ -19,6 +19,11 @@
     <!-- Custom CSS file for override -->
     <link rel="stylesheet" href="css/main.css">
 
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
     <!-- Local script -->
     <script src="js/main.js" defer></script>
 
@@ -33,32 +38,34 @@
     <main>
       <!-- Login  Perspective -->
       <section id="login-view" aria-labelledby="login-title">
-        <h2 id="login-title">Login</h2>
-        <form id="login-form" action="/login" method="POST" novalidate>
-            <label for="username">Username</label>
-            <input id="username" name="username" required minlength="2" autocomplete="username"
-            placeholder="e.g., rgladson" type="text"/>
-            <button type="submit">Login</button>
-        </form>
-        <p class="muted">New usernames will create an account (you’ll be notified).</p>
+        <h2 id="login-title">Sign in</h2>
+        <a href="/auth/github" role="button" class="contrast">
+            <i class="fa-brands fa-github" style="margin-right:.4rem"></i>
+            Sign in with GitHub
+        </a>
+        <p class="muted"><br>You’ll be redirected to GitHub to authorize this app.</p>
       </section>
 
       <!--  App Perspective -->
       <section id="app-view" aria-labelledby="app-title" hidden>
-        <div class="topbar">
-          <h2 id="app-title">Dashboard</h2>
-          <form id="logout-form" action="/logout" method="POST">
-            <button type="submit">Logout</button>
-          </form>
-        </div>
-
-        <div id="first-login-banner" class="banner" hidden>
-          No account found — created a new one for you.
+        <div class="topbar" style="display:flex;align-items:center;gap:.75rem;justify-content:space-between;">
+            <h2 id="app-title" style="margin:0;">Dashboard</h2>
+            <div style="display:flex;align-items:center;gap:.75rem;">
+                <img
+                  id="avatar"
+                  alt=""
+                  referrerpolicy="no-referrer"
+                  style="width:28px;height:28px;border-radius:50%;object-fit:cover;"
+                  src="/img/WorkoutLog.svg"
+                />
+                <p id="greeting" class="greet" style="margin:0;"></p>
+                <form id="logout-form" action="/logout" method="POST">
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
         </div>
 
         <div id="flash" aria-live="polite" class="sr-only"></div>
-
-        <p id="greeting" class="greet"></p>
 
         <!-- Add a Workout -->
         <section aria-labelledby="add-title">
@@ -112,7 +119,7 @@
             <div>
               <label for="notes">Notes (optional)</label>
               <textarea id="notes" name="notes" rows="3"
-                        placeholder="e.g., [Is user choose a differnt type of workout] I went on a 5 mile hike"></textarea>
+                        placeholder="e.g., [If user choose a different type of workout] | e.g., I went on a 5 mile hike"></textarea>
             </div>
 
             <!-- Buttons -->
@@ -129,10 +136,13 @@
               <tr>
                 <th>#</th>
                 <th>Exercise</th>
+                <th>Type</th>
+                <th>BW</th>
                 <th>Sets</th>
                 <th>Reps</th>
                 <th>Weight</th>
                 <th>Volume</th>
+                <th>Notes</th>
                 <th>Actions</th>
               </tr>
             </thead>

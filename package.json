@@ -4,15 +4,19 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "connect-mongo": "^5.1.0",
     "dotenv": "^17.2.2",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-session": "^1.18.2",
     "helmet": "^8.1.0",
     "mongodb": "^6.20.0",
-    "morgan": "^1.10.1"
+    "morgan": "^1.10.1",
+    "passport": "^0.7.0",
+    "passport-github2": "^0.1.12"
   },
   "devDependencies": {
-    "@types/node": "^24.5.2"
+    "@types/node": "^18.19.127",
+    "typescript": "^5.9.2"
   }
 }

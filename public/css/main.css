@@ -56,7 +56,7 @@ header {
   margin-bottom: 16px;
 }
 main {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -65,7 +65,7 @@ section {
   background: var(--panel);
   border: 1px solid var(--panel-border);
   border-radius: var(--radius);
-  padding: 16px;
+  padding: 20px;
   box-shadow: var(--shadow);
   margin-bottom: 16px;
 }
@@ -110,7 +110,12 @@ button.danger {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* App view container padding */
+#app-view {
+  padding: 1.5rem;         /* more room around the content */
 }
 
 /* screen-reader-only utility class, so the flash region works as intended:*/
@@ -140,11 +145,30 @@ button.danger {
 #login-view[hidden],
 #app-view[hidden] { display: none !important; }
 
+/* Login view spacing & layout */
+#login-view {
+  max-width: 480px;
+  margin: 5.5rem auto;    /* push it down and center it */
+  padding: 2rem;          /* space inside the card */
+  text-align: center;
+}
+
+#login-view h2 {
+  margin-bottom: 1rem;
+}
+
+#login-view a[role="button"] {
+  display: inline-block;
+  width: 100%;
+  margin-top: 0.75rem;    /* space between heading, button, and caption */
+}
+
 /* Form grid */
 #workout-form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+  gap: 1.2rem;                                                
+  margin-bottom: 1.5rem;
 }
 
 /* Table */
