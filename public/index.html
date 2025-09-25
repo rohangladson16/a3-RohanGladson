@@ -6,25 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Two-tier web app scaffold with login/session; workouts UI carries forward from A2.">
 
+    <!-- Google Fonts (with display=swap to avoid FOIT) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:ital,wght@0,400;0,700;1,400&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 
-    <!-- Pico.css framework -->
-     <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    >
+    <!-- Preload likely LCP image (update if needed) -->
+    <link rel="preload" as="image" href="/img/WorkoutLog.svg" fetchpriority="high">
+
+    <!-- Pico.css framework (CDN version, async/non-blocking) -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" as="style">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"></noscript>
+
+    <!-- Custom CSS (async/non-blocking) -->
+    <link rel="preload" href="css/main.css" as="style">
+    <link rel="stylesheet" href="css/main.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/main.css"></noscript>
+
+    <!-- Font Awesome (CDN) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
     
-    <!-- Custom CSS file for override -->
-    <link rel="stylesheet" href="css/main.css">
-
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
-    <!-- Local script -->
+    <!-- Local script (already deferred) -->
     <script src="js/main.js" defer></script>
 
     <!-- Prevent favicon error -->
@@ -55,6 +62,8 @@
                   id="avatar"
                   alt=""
                   referrerpolicy="no-referrer"
+                  width="28" height="28"
+                  decoding="async"
                   style="width:28px;height:28px;border-radius:50%;object-fit:cover;"
                   src="/img/WorkoutLog.svg"
                 />
@@ -147,6 +156,9 @@
               </tr>
             </thead>
             <tbody>
+              <tr id="loading-row">
+                <td colspan="10" style="text-align:center;opacity:.6;">Loading workouts…</td>
+              </tr>
               <!-- rows injected by main.js -->
             </tbody>
           </table>

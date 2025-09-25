@@ -116,6 +116,11 @@ function initWorkoutsUI() {
 
   const renderTable = (rows = []) => {
     currentRows = rows;
+    
+    // Remove the skeleton/placeholder row if present
+    const loadingRow = document.getElementById('loading-row');
+    if (loadingRow && loadingRow.parentNode) loadingRow.parentNode.removeChild(loadingRow);
+
     tbody.innerHTML = rows.map((r, i) => `
         <tr>
             <td>${i + 1}</td>
