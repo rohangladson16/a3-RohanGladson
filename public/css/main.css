@@ -134,6 +134,16 @@ button.danger {
   outline: 2px solid var(--accent); outline-offset: 2px; 
 }
 
+/* Ensure FA brands font doesn't block rendering */
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap; /* <-- key for Lighthouse */
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2")
+       format("woff2");
+}
+
 /* Footer */
 footer { 
   color: var(--muted); text-align: center; margin-top: 24px; 
