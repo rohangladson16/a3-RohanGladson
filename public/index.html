@@ -6,19 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Two-tier web app scaffold with login/session; workouts UI carries forward from A2.">
 
-    <!-- LCP image preload -->
+    <!-- Keep LCP image preload -->
     <link rel="preload" as="image" href="/img/WorkoutLog.svg" fetchpriority="high">
 
     <!-- Pico.css -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" as="style" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-
-    <!-- Font Awesome -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" 
-    as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <link rel="preload" href="css/main.css" as="style">
     <link rel="stylesheet" href="css/main.css">
@@ -39,8 +33,13 @@
       <section id="login-view" aria-labelledby="login-title">
         <h2 id="login-title">Sign in</h2>
         <a href="/auth/github" role="button" class="contrast">
-            <i class="fa-brands fa-github" style="margin-right:.4rem"></i>
-            Sign in with GitHub
+          <img src="/img/github-mark.svg" 
+          alt="GitHub logo" 
+          width="18" height="18" 
+          style="margin-right:.4rem; vertical-align:middle;" 
+          decoding="async" 
+          loading="lazy">
+        Sign in with GitHub
         </a>
         <p class="muted"><br>You’ll be redirected to GitHub to authorize this app.</p>
       </section>
