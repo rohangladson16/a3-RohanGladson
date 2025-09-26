@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Two-tier web app scaffold with login/session; workouts UI carries forward from A2.">
 
-    <!-- Keep LCP image preload -->
+    <!-- LCP image preload -->
     <link rel="preload" as="image" href="/img/WorkoutLog.svg" fetchpriority="high">
 
-    <!-- Pico.css (preconnect + preload + stylesheet) -->
+    <!-- Pico.css -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" as="style">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 
-    <!-- Your theme/overrides (preload + stylesheet) -->
     <link rel="preload" href="css/main.css" as="style">
     <link rel="stylesheet" href="css/main.css">
 
-    <!-- Font Awesome (optional; kept, ordered after critical CSS) -->
+    <!-- Font Awesome -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
