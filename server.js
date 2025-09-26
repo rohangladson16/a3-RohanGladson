@@ -38,27 +38,23 @@ const DB_NAME = process.env.DB_NAME || "workout_app";
 let db, Users, Workouts;   
 
 // Middleware
-// To improve upon our Web Applications "Best Practices Test"
+// Security headers (CSP tuned to allow CDN CSS, data: URLs and GitHub avatars)
 app.use(
   helmet({
     contentSecurityPolicy: {
       useDefaults: true,
       directives: {
-        // First we have it to where we allow app scripts only from self
         "script-src": ["'self'"],
-        // Then we have it to where our API calls stay same-origin
         "connect-src": ["'self'"],
-        // Styles from self and jsDelivr
-        "style-src": ["'self'", "https://cdn.jsdelivr.net", "'unsafe-inline'"],
-        // Fonts from self/jsDelivr and data
-        "font-src": ["'self'", "https://cdn.jsdelivr.net", "data:"],
-        // Any images that we used, or frmo data URLs, and GitHub avatars
-        "img-src": ["'self'", "data:", "https://avatars.githubusercontent.com"],
+        "style-src": ["'self'", "cdn.jsdelivr.net", "'unsafe-inline'"],
+        "font-src": ["'self'", "cdn.jsdelivr.net", "data:"],
+        "img-src": ["'self'", "data:", "avatars.githubusercontent.com"],
         "object-src": ["'none'"],
         "base-uri": ["'self'"]
       }
     },
-    crossOriginEmbedderPolicy: false // So as to avoid breaking CDN fonts/images
+    // Avoid breaking CDN fonts/images that use cross-origin requests
+    crossOriginEmbedderPolicy: false
   })
 );
 app.use(morgan("dev")); // Now we can have it where it logs requests to console
