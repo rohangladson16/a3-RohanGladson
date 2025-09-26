@@ -411,56 +411,29 @@ app.use((req, res) => {
   res.status(404).send('Not Found');
 });
 
-let _mongoReady = false;
-let _client;
+// Now we have to where we can connect to Mongo, in which it would
+// then start HTTP server
+async function start() {
+  const client = new MongoClient(MONGODB_URI);
+  await client.connect();
 
-/** Connect to Mongo and prepare collections (idempotent) */
-async function ensureMongo() {
-  if (_mongoReady) return;
-  _client = _client || new MongoClient(MONGODB_URI);
-  if (!_client.topology?.isConnected()) {
-    await _client.connect();
-  }
-  db = _client.db(DB_NAME);
+  db = client.db(DB_NAME);
   Users = db.collection("users");
   Workouts = db.collection("workouts");
 
   await Workouts.createIndex({ username: 1, createdAt: 1 });
-  await Users.createIndex(
-    { githubId: 1 },
+  await Users.createIndex({ githubId: 1 },
     {
       unique: true,
       partialFilterExpression: { githubId: { $exists: true, $type: "string" } }
     }
   );
+
   console.log(`[mongo] connected → db="${DB_NAME}"`);
-  _mongoReady = true;
+  app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
 }
-
-// Vercel handler
-export default async function handler(req, res) {
-  try {
-    await ensureMongo();
-    return app(req, res);
-  } catch (err) {
-    console.error("Vercel handler error:", err);
-    res.statusCode = 500;
-    res.end("Server error");
-  }
-}
-
-// Local/Render entrypoint 
-async function startServer() {
-  await ensureMongo();
-  app.listen(PORT, () =>
-    console.log(`Server running at http://localhost:${PORT}`)
-  );
-}
-
-// Only start an HTTP listener when NOT on Vercel
-if (!process.env.VERCEL) {
-  startServer().catch(err => {
-    console.error("Failed to start server:", err);
-    process.exit(1);
-  });
-}
+                                                                        
+start().catch(err => {                                                    
+  console.error("Failed to start server:", err);                          
+  process.exit(1);                                                        
+});
