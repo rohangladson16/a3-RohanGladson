@@ -377,10 +377,20 @@ app.post("/api/delete", ensureAuth, async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // SPA fallback for any non-API route
 app.use((req, res, next) => {
   if (req.path.startsWith("/api") || req.path === "/status") return next();
   res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// Move the final 404 ABOVE start() so it's always registered
+app.use((req, res) => {
+  console.warn('404:', req.method, req.originalUrl);
+  res.status(404).send('Not Found');
 });
 
 // Now we have to where we can connect to Mongo, in which it would
@@ -408,4 +418,4 @@ async function start() {
 start().catch(err => {                                                    
   console.error("Failed to start server:", err);                          
   process.exit(1);                                                        
-});                                         
+});
