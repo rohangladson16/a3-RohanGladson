@@ -6,32 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Two-tier web app scaffold with login/session; workouts UI carries forward from A2.">
 
-    <!-- Google Fonts (with display=swap to avoid FOIT) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:wght@400&family=Oswald:wght@600&display=swap" rel="stylesheet">
-
-    <!-- Preload likely LCP image (update if needed) -->
+    <!-- Keep LCP image preload -->
     <link rel="preload" as="image" href="/img/WorkoutLog.svg" fetchpriority="high">
 
-    <!-- Pico.css framework (switch back to regular rel=stylesheet) -->
+    <!-- Pico.css (preconnect + preload + stylesheet) -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" as="style">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 
-    <!-- Custom CSS (switch back to regular rel=stylesheet) -->
+    <!-- Your theme/overrides (preload + stylesheet) -->
     <link rel="preload" href="css/main.css" as="style">
     <link rel="stylesheet" href="css/main.css">
 
-    <!-- Font Awesome (switch back to regular rel=stylesheet) -->
+    <!-- Font Awesome (optional; kept, ordered after critical CSS) -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Local script (already deferred) -->
+    <!-- Defer app JS -->
     <script src="js/main.js" defer></script>
 
-    <!-- Prevent favicon error -->
+    <!-- Favicon (avoid 404) -->
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   </head>
   <body>
