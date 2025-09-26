@@ -6,15 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Two-tier web app scaffold with login/session; workouts UI carries forward from A2.">
 
-    <!-- Keep LCP image preload -->
+    <!-- LCP image preload -->
     <link rel="preload" as="image" href="/img/WorkoutLog.svg" fetchpriority="high">
 
-    <!-- Pico.css -->
+    <!-- Hint the CDN early -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" as="style" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
 
+    <!-- Pico.css from CDN -->
+    <link rel="preload"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+        as="style" crossorigin>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+
+    <!-- Your light overrides (after Pico) -->
     <link rel="preload" href="css/main.css" as="style">
     <link rel="stylesheet" href="css/main.css">
 
