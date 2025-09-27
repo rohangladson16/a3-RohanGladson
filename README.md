@@ -61,7 +61,7 @@ So the list of Express Middleware Packages that I used goes as follows:
 
 ### Part 1: GitHub Authentication 
 
-![GitHub Authentication Screen](images/GitHub-Auth.png)
+![GitHub Authentication Screen](GitHub-Auth.png)
 
 So, as I mentioned earlier, I had chosen OAuth authentication approach for this assignment. The way that I had gone about this way by first using passport.js with the "passport-github2" strategy, after which I would then integrate into my Express server. What would follow after that would be me then starting configuring session management with "express-session" and "connect-mongo", with the purpose ultimately being to ensure that login data persisted in MongoDB. The importance of this was more so that users remain authenticated across requests. After which I would then initialize Passport with both "passport.initialize()" and "passport.session()", in which I would then define "serializeUser" and "deserializeUser" use purpose was to store a slimmed-down user object in the session.
 
@@ -75,7 +75,7 @@ Other components that were needed form this implementation was that routes were 
 
 - Another challenge that I faced with the authentication process was trying to ensure the proper database initialization before authentication. What I mean by this, is that given that the GitHub strategy's verify callback upserts users into MongoDB, my application would have to guarantee the database connection and collections were ready before handling login requests. The problems that came with this is that throughout the modification process of the OAuth, I had a fair share of instances where authentication would fail, which resulted in server errors or the page not even loading. 
 
-![Vercel Dashboard](images/Vercel-Dashboard.png)
+![Vercel Dashboard](Vercel-Dashboard.png)
 
 ### Part 2: Using a Different Web Service Host - Vercel
 
@@ -90,13 +90,13 @@ So, I had used Vercel as my secondary hosting site for my web application. Simil
 
 **What I had Started out**
 
-![Old Lighthouse Score](images/Old-Lighthouse-Test.png)
+![Old Lighthouse Score](Old-Lighthouse-Test.png)
 
 **VS** 
 
 **What I finished with**
 
-![New Lighthouse Score](images/New-Lighthouse-Test.png)
+![New Lighthouse Score](New-Lighthouse-Test.png)
 
 **IMPORTANT NOTE: For my scores, while I was able to achieve a 100% score for three out of the four categories, I was not able to get a 100% on my Performance (98%). However, after talking with a TA from the course, I was informed that as long as I was only a couple of points off, I should be good**
 
@@ -140,10 +140,10 @@ Now, while this would not heavily the case of the assignment, given that it was 
 ### Design Achievement(s): 
 
 **Workout Log Login Page**
-![Current Login Page](images/SignIn-Page.png)
+![Current Login Page](SignIn-Page.png)
 
 **Workout Log Dashboard**
-![Current Dashboard](images/Dashboard.png)
+![Current Dashboard](Dashboard.png)
 
 ### Part 1: Implementing Accessibility Tips
 
@@ -186,5 +186,6 @@ Similar to the previous tip, I had carried over the design process that I had us
 - **R - Repetition:** The way in which I would go about using repetition throughout my Workout Log application, is by starting with having it where across both the sign-in page and dashboard, I have it to where the typography is kept consistent. What I mean by this is that I have my bold text, which are primarily used of headings of page(s), but then I implement more of a lighter shades of gray are used for secondary text such as form labels or instructions. If you also look throughout my webpage, you can see that more of a card-style layout repetition, in that if you were to look at my application, you can see that between the sign-in box, the "Add Workout" form, and the "All Workouts" log, there exits a familiar structure no matter which task the user is completing. This can also be found when you see how I have the buttons on my page set up, as they also have repeated styles, in that they have rounded edges and clearly legible text, with the only contrasting point being that their colors change depending on their type of function.
 
 - **A - Alignment:** The next concept from the CRAP principle being Alignment, plays an important role in web application, given that it's main purpose is to help make web applications easier to read. To start off, if you were to look at sign in page, you can see that overall format of page relies on center alignment. This can be see all the way at the top left with the "Workout Log" heading, down to the center of login card, as all components of the page are directing the user's focus towards the main part that requires their attention. Now, once we transition over towards the Dashboard page, we can the alignment of the page shifts to becoming more of a a structured grid system, as all the form fields for "Exercise", "Sets", "Reps", and "Weight" are horizontally aligned. The significance of this is that it ensures that  the input lines are lined up neatly, so as to make easier for the user to read. Now transitioning towards the main area in which alignment is used is down below, where you can see the "All Workouts" section, which I have it set up to use a table format with columns precisely aligned for each attribute. The significance of this, is that it organizes the  users data in a way that is easy to compare. 
+
 
 - **P - Proximity:** Now, when approaching the use of the last CRAP principle - proximity, the way in which I went about using it was to group related elements together and separate unrelated ones. Now, the way in which I went about applying this principle was if you were to look at my dashboard, the "Add a Workout" fields are grouped within a bordered card. What this makes clears is that everything that falls under that grouping (exercise name, sets, reps, weight, type, and notes) are all part of a single task. If you were to look even further, you can see that within that grouping, there are related items that are placed close together, such as the "Strength" and "Activity" radio buttons, which even though they are separated from the notes field, they are still positioned near the other workout details. Now, if we wanted to opposite of this where the we have an element that is separated, as it is unrelated to the others, then look towards the login page, where login card is centered and isolated, making it the only focal point on screen.
